@@ -1,0 +1,7 @@
+docker build .
+docker images
+docker run -p 3000:3000 0a476a20c375
+
+Mở 1 tab terminal nữa
+docker ps
+docker stop eager_chandrasekhar ( Names có trong ps)
