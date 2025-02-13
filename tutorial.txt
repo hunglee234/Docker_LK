@@ -5,3 +5,62 @@ docker run -p 3000:3000 0a476a20c375
 Mở 1 tab terminal nữa
 docker ps
 docker stop eager_chandrasekhar ( Names có trong ps)
+
+Docker - Giúp đóng gói, triển khai và chạy ứng dụng trong các container
+-- Tạo môi trường nhất quán giữa máy dev và production
+-- Dễ scale và triển khai trên nhiều nền tảng
+
+Docker Engine : nền tảng chạy container
+-- Chạy container & quản lý tài nguyên
+-- Xây dụng Docker Image ( docker build )
+-- pull hoặc push image lên Docker Hub
+-- Cung cấp CLI docker để thao tác với container
+
+Image là một bản mẫu chỉ đọc chứa tất cả các thành phần cần thiết để chạy 1 ứng dụng 
+( Hệ điều hành, mã nguồn, các thư viện dependencies, cấu hình môi trường )
+
+-- Tạo bằng docker build -t myimage .	
+-- Xem danh sách docker images
+-- Xóa bằng docker rmi myimage
+
+
+Container Là instance của image đang chạy
+Chứa dữ liệu runtime, logs, tệp tạm thời
+-- Tạo bằng docker run myimage
+-- Xem danh sách docker ps -a
+-- docker rm mycontainer
+
+
+
+
+
+Tạo File Dockerfile:
+# Sử dụng Node.js 14 làm base image
+FROM node:14  
+
+# Thiết lập thư mục làm việc trong container
+WORKDIR /app  
+
+# Copy file package.json vào container để cài đặt dependencies trước
+COPY package.json .  
+
+# Cài đặt dependencies
+RUN npm install  
+
+# Copy toàn bộ mã nguồn vào container
+COPY . .  
+
+# Khai báo container sẽ sử dụng cổng 3000
+EXPOSE 3000  
+
+# Chạy ứng dụng Node.js với file app.mjs
+CMD [ "node", "app.mjs"]
+
+
+docker build .
+
+check tiếp docker images
+docker run -p 3000:3000 0a476a20c375 ( Dựa theo Image ID )
+
+Mở thêm 1 terminal tiếp : docker ps
+docker stop eager_chandrasekhar ( Dựa theo tên trên ps )
