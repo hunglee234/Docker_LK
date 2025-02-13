@@ -19,6 +19,60 @@ Docker Engine : nền tảng chạy container
 Image là một bản mẫu chỉ đọc chứa tất cả các thành phần cần thiết để chạy 1 ứng dụng 
 ( Hệ điều hành, mã nguồn, các thư viện dependencies, cấu hình môi trường )
 
+👉 Docker Desktop là ứng dụng giúp dễ dàng chạy Docker trên Windows/macOS, có sẵn Docker Engine.
+
+📌 Tác dụng:
+✔ Cài đặt Docker nhanh chóng (không cần cấu hình phức tạp).
+✔ Cung cấp giao diện GUI để quản lý container dễ dàng.
+✔ Hỗ trợ WSL 2 trên Windows giúp chạy Docker hiệu quả hơn.
+✔ Tích hợp Kubernetes (có thể bật lên để test).
+
+📌 Mối quan hệ:
+✔ Bao gồm Docker Engine nên có thể chạy container ngay.
+✔ Hỗ trợ Docker Compose để chạy nhiều container.
+✔ Có thể kết nối Docker Hub để tải image dễ dàng.
+
+🌍 3. Docker Hub (Kho lưu trữ Docker Image)
+👉 Docker Hub là nơi lưu trữ Docker Image, giống như "GitHub dành cho container".
+
+📌 Tác dụng:
+✔ Chia sẻ Docker Image với cộng đồng.
+✔ Tải Docker Image về (docker pull).
+✔ Đẩy image lên (docker push).
+✔ Có nhiều image chính thức (Nginx, MySQL, Node.js...).
+
+📌 Mối quan hệ:
+✔ Docker Engine kéo/push image từ Docker Hub.
+✔ Docker Desktop giúp dễ dàng kết nối với Docker Hub.
+✔ Kubernetes có thể lấy image từ Docker Hub để triển khai container.
+
+⚡ 4. Docker Compose (Quản lý nhiều container cùng lúc)
+👉 Docker Compose giúp định nghĩa và chạy nhiều container với file docker-compose.yml.
+
+📌 Tác dụng:
+✔ Thay vì chạy từng container bằng tay, có thể quản lý tất cả bằng một lệnh.
+✔ Dễ dàng cấu hình kết nối giữa nhiều container (MySQL, API, Frontend…).
+✔ Hỗ trợ môi trường phát triển, staging, production.
+
+📌 Mối quan hệ:
+✔ Docker Compose chạy trên Docker Engine để tạo nhiều container cùng lúc.
+✔ Có thể làm việc với Docker Hub để lấy image.
+✔ Kubernetes có thể thay thế Docker Compose khi cần quản lý container lớn hơn.
+
+☸ 5. Kubernetes (Quản lý & tự động hóa container)
+👉 Kubernetes (K8s) giúp điều phối và quản lý nhiều container chạy trên nhiều máy chủ khác nhau.
+
+📌 Tác dụng:
+✔ Tự động mở rộng (scaling) – Kubernetes tạo thêm container khi có nhiều tải.
+✔ Cân bằng tải (load balancing) – Phân phối request giữa các container.
+✔ Tự phục hồi (self-healing) – Nếu container lỗi, Kubernetes tự restart.
+✔ Quản lý dễ dàng – Hỗ trợ cập nhật ứng dụng mà không gián đoạn.
+
+📌 Mối quan hệ:
+✔ Kubernetes sử dụng Docker Engine để chạy container.
+✔ Có thể thay thế Docker Compose khi hệ thống lớn.
+✔ Lấy image từ Docker Hub để triển khai container.
+
 -- Tạo bằng docker build -t myimage .	
 -- Xem danh sách docker images
 -- Xóa bằng docker rmi myimage
